@@ -1,5 +1,5 @@
 @extends('dashboard.layouts.master')
-@section('title','ویرایش دانشجو')
+@section('title','ویرایش استاد')
 @section('content')
     <!-- Main Content Area -->
 
@@ -10,22 +10,22 @@
             <div class="row">
                 <div class="col-xl-6 box-margin height-card">
                     <div class="card card-body">
-                        <h3 class="card-title text-info">ویرایش دانشجو</h3>
+                        <h3 class="card-title text-info">ویرایش استاد</h3>
                         <br>
-                        @if(session('update.student.error'))
+                        @if(session('update.teacher.error'))
                             <br>
                             <div class="mt-2 mb-3">
-                                <span class="alert alert-danger"> {{ session('update.student.error') }} </span>
+                                <span class="alert alert-danger"> {{ session('update.teacher.error') }} </span>
                             </div>
                         @endif
                         <div class="row">
                             <div class="col-sm-12 col-xs-12">
-                                <form action="{{ route('student.update',$student->user->id) }}"  method="post">
+                                <form action="{{ route('teacher.update',$teacher->user->id) }}"  method="post">
                                     @csrf
                                     @method('PATCH')
                                     <div class="form-group">
-                                        <label >نام کامل دانشجو</label>
-                                        <input type="text" name="full_name" class="form-control"  value="{{ $student->full_name }}"  placeholder="مثال : علی محمدی">
+                                        <label >نام کامل استاد</label>
+                                        <input type="text" name="full_name" class="form-control"  value="{{ $teacher->full_name }}"  >
                                     </div>
                                     @error('full_name')
                                     <div class="alert alert-danger">
@@ -33,17 +33,8 @@
                                     </div>
                                     @enderror
                                     <div class="form-group">
-                                        <label> شماره دانشجویی</label>
-                                        <input type="text"  name="stu_number" class="form-control" value="{{ $student->stu_number  }}"    >
-                                    </div>
-                                    @error('stu_number')
-                                    <div class="alert alert-danger">
-                                        <span > {{ $message  }}</span>
-                                    </div>
-                                    @enderror
-                                    <div class="form-group">
                                         <label> کد ملی</label>
-                                        <input type="text"  name="code_meli" class="form-control" value="{{ $student->code_meli }}"    >
+                                        <input type="text"  name="code_meli" class="form-control" value="{{ $teacher->code_meli }}"    >
                                     </div>
                                     @error('code_meli')
                                     <div class="alert alert-danger">
@@ -51,32 +42,33 @@
                                     </div>
                                     @enderror
                                     <div class="form-group">
-                                        <label> رشته تحصیلی</label>
-                                        <select name="major" id="hall" >
-                                            <option  value="مهندسی برق" {{ $student->major == 'مهندسی برق' ?"selected" : '' }} > مهندسی برق </option>
-                                            <option  value="مهندسی کامپیوتر" {{ $student->major == 'مهندسی کامپیوتر' ?"selected" : '' }}>مهندسی کامپیوتر</option>
-                                            <option value="مهندسی مکانیک" {{ $student->major == 'مهندسی مکانیک' ?"selected" : '' }}>مهندسی مکانیک</option>
-                                            <option value="مهندسی صنایع" {{ $student->major == 'مهندسی صنایع' ?"selected" : '' }}>مهندسی صنایع</option>
+                                        <label for="exampleInputEmail111">تحصیلات</label>
+                                        <input type="text" name="degree" class="form-control"  value="{{ $teacher->degree }}" id="exampleInputEmail111"  >
+                                    </div>
+                                    @error('degree')
+                                    <div class="alert alert-danger">
+                                        <span > {{ $message  }}</span>
+                                    </div>
+                                    @enderror
+                                    <div class="form-group">
+                                        <label>دانشکده</label>
+                                        <select name="college" id="hall"   class="form-control">
+                                            <option  value="صنایع و کامپیوتر" {{ $teacher->college == 'صنایع و کامپیوتر' ?"selected" : '' }} >  صنایع و کامپیوتر </option>
+                                            <option  value="برق و مکانیک" {{ $teacher->college == 'برق و مکانیک' ?"selected" : '' }}>برق و مکانیک </option>
+                                            <option value="مهندسی مواد و شیمی" {{ $teacher->college == 'مهندسی مواد و شیمی' ?"selected" : 'مهندسی مواد و شیمی' }}>مهندسی مواد و شیمی</option>
+
                                         </select>
 
                                     </div>
-                                    @error('major')
+                                    @error('college')
                                     <div class="alert alert-danger">
                                         <span > {{ $message  }}</span>
                                     </div>
                                     @enderror
+
                                     <div class="form-group">
-                                        <label> سال ورود به دانشگاه</label>
-                                        <input type="number"  name="stu_year" class="form-control" value="{{ $student->stu_year }}"    >
-                                    </div>
-                                    @error('stu_year')
-                                    <div class="alert alert-danger">
-                                        <span > {{ $message  }}</span>
-                                    </div>
-                                    @enderror
-                                    <div class="form-group">
-                                        <label> متولد</label>
-                                        <input type="number"  name="age" class="form-control" value="{{ $student->age }}"    >
+                                        <label>سن</label>
+                                        <input type="number"  name="age" class="form-control" value="{{ $teacher->age }}"    >
                                     </div>
                                     @error('age')
                                     <div class="alert alert-danger">
@@ -86,7 +78,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail111">نام کاربری</label>
-                                        <input type="text" name="user_name" class="form-control"  value="{{ $student->user->user_name }}" id="exampleInputEmail111" placeholder="نام">
+                                        <input type="text" name="user_name" class="form-control"  value="{{ $teacher->user->user_name }}" id="exampleInputEmail111"  >
                                     </div>
                                     @error('user_name')
                                     <div class="alert alert-danger">
@@ -95,7 +87,7 @@
                                     @enderror
                                     <button type="submit" class="btn btn-primary mr-2">ویرایش</button>
                                 </form>
-                                <a href="{{ route('student.index') }}" class="btn btn-danger mt-2">بازگشت</a>
+                                <a href="{{ route('teacher.index') }}" class="btn btn-danger mt-2">بازگشت</a>
                             </div>
                         </div>
                     </div>

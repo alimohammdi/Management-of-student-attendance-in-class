@@ -9,7 +9,8 @@
             <div class="row">
                 <div class="col-xl-6 box-margin height-card">
                     <div class="card card-body">
-                        <h4 class="card-title">افزودن دانشجو</h4>
+                        <h3 class="card-title text-info ">افزودن دانشجو</h3>
+                        <br>
                         @if(session('add.student.error'))
                             <br>
                             <div class="mt-2 mb-3">
