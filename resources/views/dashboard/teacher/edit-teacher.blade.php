@@ -2,7 +2,6 @@
 @section('title','ویرایش استاد')
 @section('content')
     <!-- Main Content Area -->
-
     <div class="main-content">
         <!-- Basic Form area Start -->
         <div class="container-fluid">

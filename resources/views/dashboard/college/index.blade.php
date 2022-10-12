@@ -24,6 +24,13 @@
                             </div>
                             <br>
                         @endif
+                            @if(session('update-college-success'))
+                                <br>
+                                <div class="mb-3">
+                                    <span class="alert alert-success  " > {{  session('update-college-success') }}</span>
+                                </div>
+                                <br>
+                            @endif
                         <h4 class="card-title text-info">اضافه کردن دانشکده </h4>
 
                         <div class="row">
@@ -48,17 +55,13 @@
                     </div>
                 </div>
                 <div class="col-xl-6 box-margin height-card">
-                    <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
+                     <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                         <thead>
-
                         <tr>
-
                             <th>نام دانشکده</th>
                             <th>عملیات</th>
-
                         </tr>
                         </thead>
-
                         <tbody>
                         @foreach ($colleges as $col)
 
@@ -70,7 +73,9 @@
                                     {!! Form::open(['route'=>['college.destroy','id'=>$col->id],'method'=>'delete']) !!}
                                     {!! Form::submit('حذف',['class'=>'btn btn-danger btn-sm mb-1 ','onclick' => 'return confirm("آیا از حذف دانشکده اطمینان دارید ؟؟")']); !!}
                                     {!! Form::close() !!}
-
+                                    {!! Form::open(['route'=>['college.edit','id'=>$col->id],'method'=>'get']) !!}
+                                    {!! Form::submit('ویرایش',['class'=>'btn btn-info   btn-sm ']); !!}
+                                    {!! Form::close() !!}
                                 </td>
 
 

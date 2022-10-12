@@ -12,34 +12,20 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $teachers  = Teacher::paginate(10);
         return view('dashboard.teacher.index',compact('teachers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $colleges = College::all();
         return view('dashboard.teacher.add-teacher',compact('colleges'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(AddTeacherRequest $request)
     {
         $pass = md5($request->password);
@@ -68,23 +54,12 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit($id)
     {
         $teacher =  Teacher::whereid($id)->first();
@@ -92,13 +67,7 @@ class TeacherController extends Controller
         return view('dashboard.teacher.edit-teacher',compact('teacher','colleges'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(UpdateTeacherRequest $request, $id)
     {
          User::whereid($id)->update([
@@ -120,12 +89,6 @@ class TeacherController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $teacher = Teacher::whereid($id)->first();

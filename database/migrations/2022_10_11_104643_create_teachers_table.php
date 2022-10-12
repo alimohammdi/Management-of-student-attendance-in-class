@@ -19,8 +19,8 @@ return new class extends Migration
             $table->bigInteger('code_meli');
             $table->bigInteger('age');
             $table->string('degree',200);
-            $table->unsignedBigInteger('college_id');
-            $table->foreign('college_id')->on('colleges')->references('id')->onDelete('cascade');
+            $table->unsignedBigInteger('college_id')->nullable();
+            $table->foreign('college_id')->on('colleges')->references('id')->onUpdate('cascade');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
