@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddTeacherRequest;
 use App\Http\Requests\UpdateTeacherRequest;
+use App\Models\College;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        return view('dashboard.teacher.add-teacher');
+        $colleges = College::all();
+        return view('dashboard.teacher.add-teacher',compact('colleges'));
     }
 
     /**
@@ -51,7 +53,7 @@ class TeacherController extends Controller
             'full_name' => $request->full_name,
             'code_meli' => $request->code_meli,
             'degree' => $request->degree,
-            'college' => $request->college,
+            'college_id' => $request->college,
             'age' => $request->age,
             'user_id' => $user->id
 
@@ -86,7 +88,8 @@ class TeacherController extends Controller
     public function edit($id)
     {
         $teacher =  Teacher::whereid($id)->first();
-        return view('dashboard.teacher.edit-teacher',compact('teacher'));
+        $colleges = College::all();
+        return view('dashboard.teacher.edit-teacher',compact('teacher','colleges'));
     }
 
     /**
@@ -105,6 +108,7 @@ class TeacherController extends Controller
             'full_name' => $request->full_name,
             'code_meli' => $request->code_meli,
             'degree' => $request->degree,
+            'college_id' => $request->college,
             'age' => $request->age,
         ]);
         if($teacher){

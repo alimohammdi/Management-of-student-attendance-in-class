@@ -52,7 +52,7 @@
                                     @enderror
                                     <div class="form-group">
                                         <label> رشته تحصیلی</label>
-                                        <select name="major" id="hall" >
+                                        <select name="major" id="hall"  class="form-control">
                                             <option  value="مهندسی برق" {{ $student->major == 'مهندسی برق' ?"selected" : '' }} > مهندسی برق </option>
                                             <option  value="مهندسی کامپیوتر" {{ $student->major == 'مهندسی کامپیوتر' ?"selected" : '' }}>مهندسی کامپیوتر</option>
                                             <option value="مهندسی مکانیک" {{ $student->major == 'مهندسی مکانیک' ?"selected" : '' }}>مهندسی مکانیک</option>
@@ -61,6 +61,21 @@
 
                                     </div>
                                     @error('major')
+                                    <div class="alert alert-danger">
+                                        <span > {{ $message  }}</span>
+                                    </div>
+                                    @enderror
+                                    <div class="form-group">
+                                        <label> دانشکده :</label>
+                                        <select name="college"  class="form-control">
+                                            @forelse($colleges as $col)
+                                                <option value="{{ $col->id }}" @if($col->id === $student->college_id){{'selected'}}@endif>{{ $col->value }}</option>
+                                            @empty
+                                                <span class="alert alert-danger">دانشکده ای موجود نیست </span>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    @error('college')
                                     <div class="alert alert-danger">
                                         <span > {{ $message  }}</span>
                                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
+use App\Models\College;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -29,7 +30,8 @@ class StudentController extends Controller
      */
     public function create()
     {
-        return view('dashboard.student.add-student');
+        $colleges = College::all();
+        return view('dashboard.student.add-student',compact('colleges'));
     }
 
     /**
@@ -52,6 +54,7 @@ class StudentController extends Controller
             'stu_number' => $request->stu_number,
             'code_meli' => $request->code_meli,
             'major' => $request->major,
+            'college_id' => $request->college ,
             'stu_year' => $request->stu_year,
             'age' => $request->age,
             'user_id' => $user->id
@@ -76,7 +79,8 @@ class StudentController extends Controller
     public function edit($id)
     {
         $student =  Student::whereid($id)->first();
-        return view('dashboard.student.edite-student',compact('student'));
+        $colleges = College::all();
+        return view('dashboard.student.edite-student',compact('student','colleges'));
     }
 
 
@@ -90,6 +94,7 @@ class StudentController extends Controller
             'stu_number' => $request->stu_number,
             'code_meli' => $request->code_meli,
             'major' => $request->major,
+            'college_id' => $request->college,
             'stu_year' => $request->stu_year,
             'age' => $request->age,
         ]);

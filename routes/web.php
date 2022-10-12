@@ -19,10 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix'=>'dashboard'],function(){
     Route::get('/', function () {   return view('dashboard.index'); })->name('dashboard.home');
 
-    // Manage student in dashboard
+    // Manage student
     Route::resource('/student',\App\Http\Controllers\admin\StudentController::class)->parameters(['student'=>'id']);
 
-    //Manage Teacher in dashboard
+    //Manage Teacher
     Route::resource('/teacher',\App\Http\Controllers\admin\TeacherController::class)->parameters(['teacher'=>'id']);
 
+    // Manage College
+    Route::resource('/college',\App\Http\Controllers\admin\CollegeController::class)->parameters(['college'=>'id']);
 });

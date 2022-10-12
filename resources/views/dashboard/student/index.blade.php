@@ -37,6 +37,7 @@
                                         <th>نام و نام خانواگی</th>
                                         <th>شماره دانشجویی</th>
                                         <th>رشته تحصیلی </th>
+                                        <th> دانشکده</th>
                                         <th>سال ورودی</th>
                                         <th>عملیات</th>
                                     </tr>
@@ -53,6 +54,7 @@
                                             <td>{{ $stu->full_name }}</td>
                                             <td>{{ $stu->stu_number }}</td>
                                             <td>{{ $stu->major }} </td>
+                                            <td>{{ $stu->college->value }}</td>
                                             <td>{{ $stu->stu_year }}</td>
                                             {{--                                            <td>{{ $user->created_at->format('Y/m/d') }}</td>--}}
                                             <td class="row-cols-2  ">

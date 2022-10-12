@@ -51,7 +51,7 @@
                                     @enderror
                                     <div class="form-group">
                                         <label> رشته تحصیلی</label>
-                                        <select name="major" id="">
+                                        <select name="major" class="form-control" >
                                             <option value="مهندسی برق">مهندسی برق</option>
                                             <option value="مهندسی کامپیوتر">مهندسی کامپیوتر</option>
                                             <option value="مهندسی مکانیک">مهندسی مکانیک</option>
@@ -60,6 +60,21 @@
 
                                     </div>
                                     @error('major')
+                                    <div class="alert alert-danger">
+                                        <span > {{ $message  }}</span>
+                                    </div>
+                                    @enderror
+                                    <div class="form-group">
+                                        <label> دانشکده :</label>
+                                        <select name="college"  class="form-control">
+                                            @forelse($colleges as $col)
+                                                <option value="{{ $col->id }}">{{ $col->value }}</option>
+                                            @empty
+                                                <span class="alert alert-danger">دانشکده ای موجود نیست </span>
+                                            @endforelse
+                                        </select>
+                                    </div>
+                                    @error('college')
                                     <div class="alert alert-danger">
                                         <span > {{ $message  }}</span>
                                     </div>

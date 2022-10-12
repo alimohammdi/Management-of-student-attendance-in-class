@@ -44,9 +44,11 @@
                                     <div class="form-group">
                                         <label> دانشکده :</label>
                                         <select name="college"  class="form-control">
-                                            <option value="صنایع و کامپیوتر">صنایع و کامپیوتر</option>
-                                            <option value="برق و مکانیک">برق و مکانیک</option>
-                                            <option value="مهندسی مواد و شیمی">مهندسی مواد و شیمی</option>
+                                            @forelse($colleges as $col)
+                                                <option value="{{ $col->id }}">{{ $col->value }}</option>
+                                            @empty
+                                                  <span class="alert alert-danger">دانشکده ای موجود نیست </span>
+                                            @endforelse
                                         </select>
                                     </div>
                                     @error('college')

@@ -51,14 +51,14 @@
                                     </div>
                                     @enderror
                                     <div class="form-group">
-                                        <label>دانشکده</label>
-                                        <select name="college" id="hall"   class="form-control">
-                                            <option  value="صنایع و کامپیوتر" {{ $teacher->college == 'صنایع و کامپیوتر' ?"selected" : '' }} >  صنایع و کامپیوتر </option>
-                                            <option  value="برق و مکانیک" {{ $teacher->college == 'برق و مکانیک' ?"selected" : '' }}>برق و مکانیک </option>
-                                            <option value="مهندسی مواد و شیمی" {{ $teacher->college == 'مهندسی مواد و شیمی' ?"selected" : 'مهندسی مواد و شیمی' }}>مهندسی مواد و شیمی</option>
-
+                                        <label> دانشکده :</label>
+                                        <select name="college"  class="form-control">
+                                            @forelse($colleges as $col)
+                                                <option value="{{ $col->id }}" @if($col->id === $teacher->college_id){{'selected'}}@endif>{{ $col->value }}</option>
+                                            @empty
+                                                <span class="alert alert-danger">دانشکده ای موجود نیست </span>
+                                            @endforelse
                                         </select>
-
                                     </div>
                                     @error('college')
                                     <div class="alert alert-danger">

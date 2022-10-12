@@ -8,13 +8,15 @@
                 <li ><a href="{{ route('student.create') }}" style="{{ request()->is('dashboard/student/create') ? 'color:black' : ''}}">افزودن دانشجو</a></li>
             </ul>
         </li>
-        <li class="treeview @php if( (request()->is('dashboard/student')) || ( request()->is('dashboard/student/create'))){echo  'active';} @endphp">
+        <li class="treeview @php if( (request()->is('dashboard/teacher')) || ( request()->is('dashboard/teacher/create'))){echo  'active';} @endphp">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps "></i> <span>مدیریت اساتید</span> <i class="fa fa-angle-left"></i></a>
             <ul class="treeview-menu">
                 <li ><a href="{{ route('teacher.index') }}" style="{{ request()->is('dashboard/teacher') ? 'color:black' : ''}}">نمایش اساتید</a></li>
                 <li ><a href="{{ route('teacher.create') }}" style="{{ request()->is('dashboard/teacher/create') ? 'color:black' : ''}}">افزودن استاد</a></li>
             </ul>
         </li>
+        <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index')){ echo 'active';} @endphp "><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
+
         <li class="treeview">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps"></i> <span>برنامه ها</span> <i class="fa fa-angle-left"></i></a>
             <ul class="treeview-menu">

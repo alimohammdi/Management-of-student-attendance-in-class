@@ -53,7 +53,7 @@
                                             <td>{{ $teach->full_name }}</td>
                                             <td>{{ $teach->code_meli }}</td>
                                             <td>{{ $teach->degree }} </td>
-                                            <td>{{ $teach->college }}</td>
+                                            <td>{{ $teach->college->value }}</td>
                                             {{--                                            <td>{{ $user->created_at->format('Y/m/d') }}</td>--}}
                                             <td class="row-cols-2  ">
                                                 {!! Form::open(['route'=>['teacher.destroy','id'=>$teach->id],'method'=>'delete']) !!}
