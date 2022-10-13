@@ -14,7 +14,13 @@ class College extends Model
     public function student(){
         $this->hasMany(Student::class);
     }
-    public function teacher(){
+    public function teachers(){
         $this->hasMany(Teacher::class);
     }
+
+    public function majors(){
+        $this->hasMany(Major::class);
+    }
+
+
 }

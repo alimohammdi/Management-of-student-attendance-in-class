@@ -16,4 +16,7 @@ class Student extends Model
     public function college(){
         return $this->belongsTo(College::class);
     }
+    public function major(){
+        return $this->belongsTo(Major::class);
+    }
 }

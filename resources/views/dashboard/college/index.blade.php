@@ -39,7 +39,7 @@
                                     @csrf
                                     <div class="form-group">
                                         <label for="exampleInputEmail111"> نام دانشکده :</label>
-                                        <input type="text" name="name" class="form-control"  value="{{ old('value') }}" id="exampleInputEmail111"   >
+                                        <input type="text" name="name" class="form-control"  value="{{ old('name') }}" id="exampleInputEmail111"   >
                                     </div>
                                     @error('name')
                                     <div class="alert alert-danger">

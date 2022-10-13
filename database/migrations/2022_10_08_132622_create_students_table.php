@@ -18,9 +18,10 @@ return new class extends Migration
             $table->string('full_name',200);
             $table->bigInteger('stu_number');
             $table->bigInteger('code_meli');
-            $table->string('major',250);
+            $table->unsignedBigInteger('major_id')->nullable();
+            $table->foreign('major_id')->on('majors')->references('id')->onUpdate('cascade')->nullOnDelete();
             $table->unsignedBigInteger('college_id')->nullable();
-            $table->foreign('college_id')->on('colleges')->references('id')->onUpdate('cascade');
+            $table->foreign('college_id')->on('colleges')->references('id')->onUpdate('cascade')->nullOnDelete();
             $table->integer('stu_year');
             $table->integer('age');
             $table->unsignedBigInteger('user_id');

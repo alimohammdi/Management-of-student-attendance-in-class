@@ -27,4 +27,11 @@ Route::group(['prefix'=>'dashboard'],function(){
 
     // Manage College
     Route::resource('/college',\App\Http\Controllers\admin\CollegeController::class)->parameters(['college'=>'id']);
+
+    // Manage Major
+    Route::resource('/major',\App\Http\Controllers\admin\MajorController::class)->parameters(['major'=>'id']);
+
+
+
+
 });

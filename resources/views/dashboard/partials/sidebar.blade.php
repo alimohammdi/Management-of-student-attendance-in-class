@@ -15,7 +15,8 @@
                 <li ><a href="{{ route('teacher.create') }}" style="{{ request()->is('dashboard/teacher/create') ? 'color:black' : ''}}">افزودن استاد</a></li>
             </ul>
         </li>
-        <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index')){ echo 'active';} @endphp "><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
+        <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index') || request()->is('major.edit')){ echo 'active';} @endphp "><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
+        <li><a href="{{ route('major.index') }}" class="@php if(request()->is('major.index') || request()->is('major.edit')){ echo 'active';} @endphp "><i class="zmdi zmdi-graduation-cap"></i><span>رشته ها</span></a></li>
 
         <li class="treeview">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps"></i> <span>برنامه ها</span> <i class="fa fa-angle-left"></i></a>
