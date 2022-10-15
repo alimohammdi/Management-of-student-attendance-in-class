@@ -22,5 +22,8 @@ class College extends Model
         $this->hasMany(Major::class);
     }
 
+    public function courses(){
+        $this->hasMany(Course::class);
+    }
 
 }

@@ -31,6 +31,8 @@ Route::group(['prefix'=>'dashboard'],function(){
     // Manage Major
     Route::resource('/major',\App\Http\Controllers\admin\MajorController::class)->parameters(['major'=>'id']);
 
+    // Manage Course
+    Route::resource('/course',\App\Http\Controllers\admin\CourseController::class)->parameters(['course'=>'id']);
 
 
 
