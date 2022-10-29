@@ -34,6 +34,7 @@ Route::group(['prefix'=>'dashboard'],function(){
     // Manage Course
     Route::resource('/course',\App\Http\Controllers\admin\CourseController::class)->parameters(['course'=>'id']);
 
-
+    // Manage Time
+    Route::resource('/time',\App\Http\Controllers\admin\TimeController::class)->parameters(['time'=>'id']);
 
 });
