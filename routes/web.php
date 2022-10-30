@@ -37,4 +37,10 @@ Route::group(['prefix'=>'dashboard'],function(){
     // Manage Time
     Route::resource('/time',\App\Http\Controllers\admin\TimeController::class)->parameters(['time'=>'id']);
 
+    // Manage Class
+    Route::resource('/class',\App\Http\Controllers\admin\ClassController::class)->parameters(['class'=>'id']);
+
+
+
+
 });

@@ -12,18 +12,23 @@ class College extends Model
     protected $guarded = ['id'];
 
     public function student(){
-        $this->hasMany(Student::class);
+        return $this->hasMany(Student::class);
     }
+
     public function teachers(){
-        $this->hasMany(Teacher::class);
+        return  $this->hasMany(Teacher::class);
     }
 
     public function majors(){
-        $this->hasMany(Major::class);
+        return  $this->hasMany(Major::class);
     }
 
     public function courses(){
-        $this->hasMany(Course::class);
+        return  $this->hasMany(Course::class);
+    }
+
+    public function clases(){
+        return $this->hasMany(Clases::class);
     }
 
 }

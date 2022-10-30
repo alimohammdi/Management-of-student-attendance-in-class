@@ -175,7 +175,8 @@ return [
         'code_meli'             => 'شماره ملی',
         'stu_year'              => 'سال ورود به دانشگاه',
         'code'                  => 'کد',
-        'weekDay'               => 'روز هفته'
+        'weekDay'               => 'روز هفته',
+        'classNumber'           => 'شماره کلاس'
 
     ],
 ];
