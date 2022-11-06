@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('weekDay');
             $table->integer('time');
+            $table->enum('status',['0','1','2'])->default('0');
+            $table->unsignedBigInteger('class_id');
+            $table->foreign('class_id')->on('clases')->references('id')->onUpdate('cascade');
             $table->timestamps();
         });
     }

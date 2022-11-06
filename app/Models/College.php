@@ -31,4 +31,8 @@ class College extends Model
         return $this->hasMany(Clases::class);
     }
 
+
+    public function addunit(){
+        return $this->belongsToMany(Addunit::class);
+    }
 }

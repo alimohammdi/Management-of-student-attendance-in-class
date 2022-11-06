@@ -24,10 +24,12 @@
             </ul>
         </li>
 
-        <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index') || request()->is('major.edit')){ echo 'active';} @endphp "><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
-        <li><a href="{{ route('major.index') }}" class="@php if(request()->is('major.index') || request()->is('major.edit')){ echo 'active';} @endphp "><i class="zmdi zmdi-graduation-cap"></i><span>رشته ها</span></a></li>
+        <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index') || request()->is('college.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/college') ? 'color:black' : ''}}"><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
+        <li><a href="{{ route('major.index') }}" class="@php if(request()->is('major.index') || request()->is('major.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/major') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>رشته ها</span></a></li>
 
-        <li><a href="{{ route('time.index') }}" class="@php if(request()->is('time.index') || request()->is('time.edit')){ echo 'active';} @endphp "><i class="zmdi zmdi-graduation-cap"></i><span>زمانبندی</span></a></li>
+        <li><a href="{{ route('time.index') }}" class="@php if(request()->is('time.index') || request()->is('time.edit')){ echo 'active';} @endphp  " style="{{ request()->is('dashboard/time') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>زمانبندی</span></a></li>
+
+        <li><a href="{{ route('class.index') }}" class="@php if(request()->is('class.index') || request()->is('class.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/class') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>مدیریت کلاس ها</span></a></li>
 
         <li class="treeview">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps"></i> <span>برنامه ها</span> <i class="fa fa-angle-left"></i></a>

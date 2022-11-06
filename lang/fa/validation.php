@@ -176,7 +176,9 @@ return [
         'stu_year'              => 'سال ورود به دانشگاه',
         'code'                  => 'کد',
         'weekDay'               => 'روز هفته',
-        'classNumber'           => 'شماره کلاس'
-
+        'classNumber'           => 'شماره کلاس',
+        'teacher'               => 'استاد',
+        'course'               => 'درس',
+        'class'               => 'شماره کلاس',
     ],
 ];
