@@ -22,7 +22,31 @@
                                         <span class="alert alert-success"> {{ session('create-unit-error') }} </span>
                                     </div>
                                 @endif
+                                @if(session('delete-AddUnit-success'))
+                                    <br>
+                                    <div class="mt-2 mb-3">
+                                        <span class="alert alert-success"> {{ session('delete-AddUnit-success') }} </span>
+                                    </div>
+                                @endif
+                                @if(session('delete-AddUnit-error'))
+                                    <br>
+                                    <div class="mt-2 mb-3">
+                                        <span class="alert alert-error"> {{ session('delete-AddUnit-error') }} </span>
+                                    </div>
+                                @endif
 
+                                @if(session('update-unit-error'))
+                                    <br>
+                                    <div class="mt-2 mb-3">
+                                        <span class="alert alert-error"> {{ session('update-unit-error') }} </span>
+                                    </div>
+                                @endif
+                                @if(session('update-unit-success'))
+                                    <br>
+                                    <div class="mt-2 mb-3">
+                                        <span class="alert alert-success"> {{ session('update-unit-success') }} </span>
+                                    </div>
+                                @endif
                                 <a href="{{ route('select.college.unit') }}" class="btn btn-primary mt-2 mb-2 col align-self-start">  افزودن واحد درسی</a>
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
@@ -55,11 +79,11 @@
                                                 {!! Form::close() !!}
 
                                             </td>
-                                            <th>
+                                            <td>
                                                 {!! Form::open(['route'=>['addUnit.edit','id'=>$unit->id],'method'=>'get']) !!}
                                                 {!! Form::submit('ویرایش',['class'=>'btn btn-info btn-sm mb-1 ']); !!}
                                                 {!! Form::close() !!}
-                                            </th>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

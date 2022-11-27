@@ -19,4 +19,9 @@ class Addunit extends Model
         return $this->belongsTo(College::class);
     }
 
+    public function time()
+    {
+        return $this->hasMany(Time::class);
+    }
+
 }

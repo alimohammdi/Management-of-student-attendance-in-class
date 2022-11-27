@@ -9,4 +9,9 @@ class Time extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+
+    public function addUnit()
+    {
+        return $this->belongsTo(Addunit::class);
+    }
 }

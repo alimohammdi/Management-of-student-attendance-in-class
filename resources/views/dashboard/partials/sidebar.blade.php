@@ -23,7 +23,13 @@
                 <li ><a href="{{ route('course.create') }}" style="{{ request()->is('dashboard/course/create') ? 'color:black' : ''}}">افزودن درس</a></li>
             </ul>
         </li>
-
+        <li class="treeview @php if( (request()->is('dashboard/addUnit')) || ( request()->is('dashboard/addUnit/create')) || ( request()->is('dashboard/select-college'))){echo  'active';} @endphp">
+            <a href="javascript:void(0)"><i class="zmdi zmdi-apps "></i> <span>مدیریت واحد های دانشکده</span> <i class="fa fa-angle-left"></i></a>
+            <ul class="treeview-menu">
+                <li ><a href="{{ route('addUnit.index') }}" style="{{ request()->is('dashboard/addUnit') ? 'color:black' : ''}}">نمایش واحد ها</a></li>
+                <li ><a href="{{ route('select.college.unit') }}" style="{{ request()->is('dashboard/addUnit/create') || ( request()->is('dashboard/select-college')) ? 'color:black' : ''}}">افزودن واحد به دانشکده</a></li>
+            </ul>
+        </li>
         <li><a href="{{ route('college.index') }}" class="@php if(request()->is('college.index') || request()->is('college.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/college') ? 'color:black' : ''}}"><i class="zmdi zmdi-store"></i><span>دانشکده ها</span></a></li>
         <li><a href="{{ route('major.index') }}" class="@php if(request()->is('major.index') || request()->is('major.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/major') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>رشته ها</span></a></li>
 

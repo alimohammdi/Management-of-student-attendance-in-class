@@ -147,7 +147,25 @@ class AddunitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $unit  = Addunit::findorfail($id)->first();
+
+        if($unit->time1_id){
+            $time1 = Time::where('id','=',$unit->time1_id)->first();
+        }
+        if($unit->time2_id){
+            $time2 = Time::where('id','=',$unit->time2_id)->first();
+        }
+        $teachers  = Teacher::all();
+        $courses = Course::where('college_id', '=' ,$unit->college_id)->get();
+        $classes = Clases::all();
+        $majors = Major::all();
+        if(isset($time1) && isset($time2)){
+            return view('dashboard/addUnit/edit',compact('unit','time1','time2','teachers','courses','classes','majors'));
+        }elseif(isset($time1) && !isset($time2)){
+            return view('dashboard/addUnit/edit',compact('unit','time1','teachers','courses','classes','majors'));
+        }else{
+            return back();
+        }
     }
 
     /**
@@ -157,9 +175,68 @@ class AddunitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,$id)
     {
-        //
+        $unit = Addunit::where('id','=',$id)->first();
+        $day = $request->day;
+        $time = $request->time;
+        $class = $request->class;
+        $day2 = $request->day2;
+        $time2 = $request->time2;
+        $class2 = $request->class2;
+        $status = $request->status;
+        if(isset($day)  && !isset($day2)){
+            $createTime = Time::where('id','=',$unit->time1_id)->update([
+                'weekDay' => $day,
+                'time'   => $time,
+                'class_id' => $class,
+                'status'  => '0'
+            ]);
+
+        }elseif( isset($day) && isset($day2) ){
+            $createTime = Time::where('id','=',$unit->time1_id)->update([
+                'weekDay' => $day,
+                'time'   => $time,
+                'class_id' => $class,
+                'status'  => '0'
+            ]);
+            $createTime2 = Time::where('id','=',$unit->time2_id)->update([
+                'weekDay' => $day2,
+                'time'   => $time2,
+                'class_id' => $class2,
+                'status'  => $status
+            ]);
+        }else{
+            session()->flash('update-unit-error','ویرایش انجام نشد لطفا دوباره تلاش کنید');
+            return redirect()->route('addUnit.index');
+        }
+
+        if(isset($createTime) &&  !isset($createTime2) ){
+            $createUnit = $unit->update([
+                'major_id' => $request->major,
+                'teacher_id' => $request->teacher,
+                'course_id' => $request->course,
+                'time1_id'  => $createTime->id
+            ]);
+        }elseif(isset($createTime) && isset($createTime2)){
+            $createUnit =$unit->update([
+                'major_id' => $request->major,
+                'teacher_id' => $request->teacher,
+                'course_id' => $request->course,
+                'status'  => $status
+            ]);
+        }else{
+            session()->flash('update-unit-error','واحد ویرایش نشد لطفا مجددا تلاش کنید');
+            return redirect()->route('addUnit.index');
+        }
+
+        if($createUnit){
+            session()->flash('update-unit-success','ویرایش با موفقیت انجام شد');
+            return redirect()->route('addUnit.index');
+        }else{
+            session()->flash('update-unit-error','واحد ویرایش نشد لطفا مجددا تلاش کنید');
+            return redirect()->route('addUnit.index');
+        }
     }
 
     /**
@@ -170,6 +247,24 @@ class AddunitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $selectRecord = Addunit::findorfail($id);
+        $selectTime1 = $selectRecord->time1_id ;
+        $selectTime2 = $selectRecord->time2_id ;
+
+
+        $deleteAddUnit = Addunit::findorfail($id)->delete();
+        if($selectTime1){
+            Time::findorfail($selectTime1)->delete();
+        }
+        if($selectTime2){
+            Time::findorfail($selectTime2)->delete();
+        }
+        if($deleteAddUnit){
+            session()->flash('delete-AddUnit-success','رکورد مورد نظر حذف شد');
+            return back();
+        }else{
+            session()->flash('delete-AddUnit-error','مشکلی ر خ داد لطفا بعدا تلاش کنید');
+            return back();
+        }
     }
 }
