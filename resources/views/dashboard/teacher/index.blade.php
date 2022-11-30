@@ -10,6 +10,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title mb-2">نمایش استاید</h4>
+
                                 @if(session('add.teacher.success'))
                                     <br>
                                     <div class="mt-2 mb-3">

@@ -45,4 +45,8 @@ Route::group(['prefix'=>'dashboard'],function(){
     Route::resource('/addUnit',\App\Http\Controllers\admin\AddunitController::class)->parameters(['addUnit'=>'id']);
     Route::get('/select-college',[\App\Http\Controllers\admin\AddunitController::class,'selectCollege'])->name('select.college.unit');
 
+    // Select Unit
+   Route::resource('/selectUnit',\App\Http\Controllers\admin\SelectUnitController::class)->parameters(['selectUnit'=>'id']);
+    Route::get('/selectCollege',[\App\Http\Controllers\admin\SelectUnitController::class,'selectcollege'])->name('selectCollege');
+
 });

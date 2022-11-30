@@ -180,5 +180,6 @@ return [
         'teacher'               => 'استاد',
         'course'               => 'درس',
         'class'               => 'شماره کلاس',
+        'code_course'          => 'کد درس'
     ],
 ];

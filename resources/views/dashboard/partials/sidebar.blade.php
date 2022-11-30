@@ -37,6 +37,9 @@
 
         <li><a href="{{ route('class.index') }}" class="@php if(request()->is('class.index') || request()->is('class.edit')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/class') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>مدیریت کلاس ها</span></a></li>
 
+{{--        select unit  --}}
+        <li><a href="{{ route('selectCollege') }}" class="@php if(request()->is('selectUnit.index') || request()->is('selectUnit.selectCollege')){ echo 'active';} @endphp " style="{{ request()->is('dashboard/selectUnit') ? 'color:black' : ''}}"><i class="zmdi zmdi-graduation-cap"></i><span>انتخاب واحد</span></a></li>
+
         <li class="treeview">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps"></i> <span>برنامه ها</span> <i class="fa fa-angle-left"></i></a>
             <ul class="treeview-menu">
