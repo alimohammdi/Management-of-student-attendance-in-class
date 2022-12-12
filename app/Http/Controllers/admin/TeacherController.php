@@ -9,6 +9,7 @@ use App\Models\College;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class TeacherController extends Controller
 {
@@ -28,7 +29,7 @@ class TeacherController extends Controller
 
     public function store(AddTeacherRequest $request)
     {
-        $pass = md5($request->password);
+        $pass =  Hash::make($request->password);
         $user = User::create([
             'user_name' => $request->user_name,
             'password' => $pass,

@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddStudentRequest;
 use App\Http\Requests\UpdateStudentRequest;
 use App\Models\College;
+use App\Models\Role;
 use App\Models\Student;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
@@ -42,7 +44,7 @@ class StudentController extends Controller
      */
     public function store(AddStudentRequest $request)
     {
-        $pass = md5($request->password);
+        $pass =  Hash::make($request->password);
         $user = User::create([
             'user_name' => $request->user_name,
             'password' => $pass,
@@ -122,4 +124,27 @@ class StudentController extends Controller
         return back();
 
     }
+
+
+    public function addRolePage($id){
+        $student = Student::whereid($id)->first();
+        $roles = Role::all();
+        return view('dashboard.student.add-role',compact('roles','student'));
+    }
+
+
+
+    public function addRoleToUser(Request $request , $id){
+        $user = User::findorfail($id)->first();
+         $addRole  =  $user->roles()->sync($request->role);
+        if($addRole){
+            session()->flash('add.role.success','نقش با موفقیت افزوده شد');
+            return redirect()->route('student.index');
+        }else{
+            session()->flash('add.role.success','مشکلی رخ داده لطفا دوباره تلاش کنید');
+            return redirect()->route('student.index');
+        }
+    }
+
+
 }

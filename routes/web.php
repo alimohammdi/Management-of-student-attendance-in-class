@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,14 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
+Auth::routes();
 // dashboard
-Route::group(['prefix'=>'dashboard'],function(){
+
+Route::group(['middleware' => ['auth'],'prefix'=>'dashboard'],function(){
     Route::get('/', function () {   return view('dashboard.index'); })->name('dashboard.home');
 
     // Manage student
     Route::resource('/student',\App\Http\Controllers\admin\StudentController::class)->parameters(['student'=>'id']);
+    Route::get('/add-role/{id}',[\App\Http\Controllers\admin\StudentController::class,'addRolePage'])->name('student.addRole');
+    Route::post('/add-Role-user/{id}',[\App\Http\Controllers\admin\StudentController::class,'addRoleToUser'])->name('add.role.store');
 
     //Manage Teacher
     Route::resource('/teacher',\App\Http\Controllers\admin\TeacherController::class)->parameters(['teacher'=>'id']);
@@ -49,4 +52,11 @@ Route::group(['prefix'=>'dashboard'],function(){
    Route::resource('/selectUnit',\App\Http\Controllers\admin\SelectUnitController::class)->parameters(['selectUnit'=>'id']);
     Route::get('/selectCollege',[\App\Http\Controllers\admin\SelectUnitController::class,'selectcollege'])->name('selectCollege');
 
+    // Manage Permission and Role
+    Route::resource('/permission',\App\Http\Controllers\admin\PermissionController::class)->parameters(['permission'=>'id']);
+    Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->parameters(['role'=>'id']);
 });
+//Auth
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('auth');
+Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class , 'logout'])->name('logout');
+Route::post('user_login', [\App\Http\Controllers\Auth\LoginController::class , 'user_login'])->name('user.login');

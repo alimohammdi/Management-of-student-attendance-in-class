@@ -22,8 +22,9 @@ return new class extends Migration
             $table->foreign('major_id')->on('majors')->references('id')->onUpdate('cascade')->nullOnDelete();
             $table->unsignedBigInteger('college_id')->nullable();
             $table->foreign('college_id')->on('colleges')->references('id')->onUpdate('cascade')->nullOnDelete();
-            $table->integer('stu_year');
-            $table->integer('age');
+            $table->integer('stu_year')->nullable();
+            $table->integer('age')->nullable();
+            $table->integer('phone_number')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->on('users')->references('id')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

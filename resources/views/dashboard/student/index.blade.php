@@ -28,6 +28,12 @@
                                         <span class="alert alert-danger text-dark"> {{ session('delete.student.success') }} </span>
                                     </div>
                                 @endif
+                                @if(session('add.role.success'))
+                                    <br>
+                                    <div class="mt-2 mb-3">
+                                        <span class="alert alert-success text-dark"> {{ session('add.role.success') }} </span>
+                                    </div>
+                                @endif
                                 <a href="{{ route('student.create') }}" class="btn btn-primary mt-2 mb-2 col align-self-start"> افزودن دانشجوی جدید</a>
                                 <table id="datatable-buttons" class="table table-striped dt-responsive nowrap w-100">
                                     <thead>
@@ -39,6 +45,7 @@
                                         <th>رشته تحصیلی </th>
                                         <th> دانشکده</th>
                                         <th>سال ورودی</th>
+                                        <th>نقش کاربر</th>
                                         <th>عملیات</th>
                                     </tr>
                                     </thead>
@@ -53,16 +60,37 @@
                                             <td>{{ $num ++  }}</td>
                                             <td>{{ $stu->full_name }}</td>
                                             <td>{{ $stu->stu_number }}</td>
-                                            <td>{{ $stu->major }} </td>
-                                            <td>{{ $stu->college->value }}</td>
-                                            <td>{{ $stu->stu_year }}</td>
+                                            <td>@if(!empty($stu->major))
+                                                    {{ $stu->major }}
+                                                    @else
+                                                    {{ '-' }}
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if(!empty($stu->college->value))
+                                                    {{ $stu->college->value }}
+                                                @else
+                                                    {{ '-' }}
+                                                @endif</td>
+                                            <td>
+                                                @if(!empty($stu->stu_year))
+                                                    {{ $stu->stu_year }}
+                                                @else
+                                                    {{ '-' }}
+                                                @endif</td>
+                                            </td>
                                             {{--                                            <td>{{ $user->created_at->format('Y/m/d') }}</td>--}}
+                                            <th>
+                                            </th>
                                             <td class="row-cols-2  ">
                                                 {!! Form::open(['route'=>['student.destroy','id'=>$stu->id],'method'=>'delete']) !!}
                                                 {!! Form::submit('حذف',['class'=>'btn btn-danger btn-sm mb-1 ','onclick' => 'return confirm("آیا از حذف دانشجو اطمینان دارید ؟؟")']); !!}
                                                 {!! Form::close() !!}
                                                 {!! Form::open(['route'=>['student.edit','id'=>$stu->id],'method'=>'get']) !!}
                                                 {!! Form::submit('ویرایش',['class'=>'btn btn-info btn-sm mb-1 ']); !!}
+                                                {!! Form::close() !!}
+                                                {!! Form::open(['route'=>['student.addRole','id'=>$stu->id],'method'=>'get']) !!}
+                                                {!! Form::submit('افزودن نقش',['class'=>'btn btn-warning btn-sm mb-1 ']); !!}
                                                 {!! Form::close() !!}
                                             </td>
                                         </tr>

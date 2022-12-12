@@ -50,4 +50,21 @@ class User extends Authenticatable
     public function teacher(){
         return $this->belongsTo(Teacher::class);
     }
+
+
+
+    public function permissions(){
+        return $this->belongsToMany(Permission::class);
+    }
+    public function roles(){
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function hasRole($roles){
+        return !! $roles->intersect($this->roles)->all();
+    }
+
+    public function  hasPermission($permission){
+       return $this->permissions->contains('name',$permission->name)  || $this->hasRole($permission->role);
+    }
 }
