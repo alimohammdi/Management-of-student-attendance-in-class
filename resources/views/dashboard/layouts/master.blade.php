@@ -21,7 +21,7 @@
 
 <body>
 <!-- Preloader -->
-@include('dashboard.partials.preloader')
+{{--@include('dashboard.partials.preloader')--}}
 <!-- Preloader -->
 
 <!-- ======================================

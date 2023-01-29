@@ -78,12 +78,12 @@
                                     <div class="form-group">
                                         <label >انتخاب زمان کلاس ثابت هفتگی *</label>
                                         <select name="time" class="form-control">
-                                            <option value="8" @if($time1->time == '8'){{ 'selected'  }} @endif >8-10</option>
-                                            <option value="10" @if($time1->time == '10'){{ 'selected'  }} @endif >10-12</option>
-                                            <option value="12" @if($time1->time == '12'){{ 'selected'  }} @endif >12-14</option>
-                                            <option value="14" @if($time1->time == '14'){{ 'selected'  }} @endif >14-16</option>
-                                            <option value="16" @if($time1->time == '16'){{ 'selected'  }} @endif >16-18</option>
-                                            <option value="18" @if($time1->time == '18'){{ 'selected'  }} @endif >18-20</option>
+                                            <option value="08:00:00" @if($time1->time == '08:00:00'){{ 'selected'  }} @endif >8-10</option>
+                                            <option value="10:00:00" @if($time1->time == '10:00:00'){{ 'selected'  }} @endif >10-12</option>
+                                            <option value="12:00:00" @if($time1->time == '12:00:00'){{ 'selected'  }} @endif >12-14</option>
+                                            <option value="14:00:00" @if($time1->time == '14:00:00'){{ 'selected'  }} @endif >14-16</option>
+                                            <option value="16:00:00" @if($time1->time == '16:00:00'){{ 'selected'  }} @endif >16-18</option>
+                                            <option value="18:00:00" @if($time1->time == '18:00:00'){{ 'selected'  }} @endif >18-20</option>
                                         </select>
                                     </div>
                                     @error('time')
@@ -131,12 +131,12 @@
                                         <label >انتخاب زمان کلاس ثابت هفتگی  </label>
                                         <select name="time2" class="form-control">
                                             <option value="">ساعت کلاسی مورد نظر خود را انتخاب کنید </option>
-                                            <option value="8" @if($time2->time == '8'){{ 'selected'  }} @endif >8-10</option>
-                                            <option value="10" @if($time2->time == '10'){{ 'selected'  }} @endif >10-12</option>
-                                            <option value="12" @if($time2->time == '12'){{ 'selected'  }} @endif >12-14</option>
-                                            <option value="14" @if($time2->time == '14'){{ 'selected'  }} @endif >14-16</option>
-                                            <option value="16" @if($time2->time == '16'){{ 'selected'  }} @endif >16-18</option>
-                                            <option value="18" @if($time2->time == '18'){{ 'selected'  }} @endif >18-20</option>
+                                            <option value="8:00:00" @if($time2->time == '8:00:00'){{ 'selected'  }} @endif >8-10</option>
+                                            <option value="10:00:00" @if($time2->time == '10:00:00'){{ 'selected'  }} @endif >10-12</option>
+                                            <option value="12:00:00" @if($time2->time == '12:00:00'){{ 'selected'  }} @endif >12-14</option>
+                                            <option value="14:00:00" @if($time2->time == '14:00:00'){{ 'selected'  }} @endif >14-16</option>
+                                            <option value="16:00:00" @if($time2->time == '16:00:00'){{ 'selected'  }} @endif >16-18</option>
+                                            <option value="18:00:00" @if($time2->time == '18:00:00'){{ 'selected'  }} @endif >18-20</option>
                                         </select>
                                     </div>
                                     @error('time2')

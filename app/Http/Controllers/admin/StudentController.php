@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Hash;
 
 class StudentController extends Controller
 {
+
+//    public function __construct()
+//    {
+//        $this->middleware('can:admin,user');
+//    }
+
     /**
      * Display a listing of the resource.
      *

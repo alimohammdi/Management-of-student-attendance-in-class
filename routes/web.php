@@ -3,16 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 Auth::routes();
 // dashboard
@@ -56,6 +48,16 @@ Route::group(['middleware' => ['auth'],'prefix'=>'dashboard'],function(){
     Route::resource('/permission',\App\Http\Controllers\admin\PermissionController::class)->parameters(['permission'=>'id']);
     Route::resource('/role',\App\Http\Controllers\admin\RoleController::class)->parameters(['role'=>'id']);
 });
+
+// عملیات های اصلی حضور و غیاب
+
+Route::prefix('/')->group( function(){
+    Route::resource('/rollcall',\App\Http\Controllers\admin\RollcallController::class)->parameters(['rollcall'=>'id']);
+ });
+
+
+
+
 //Auth
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard')->middleware('auth');
 Route::get('logout', [\App\Http\Controllers\Auth\LoginController::class , 'logout'])->name('logout');

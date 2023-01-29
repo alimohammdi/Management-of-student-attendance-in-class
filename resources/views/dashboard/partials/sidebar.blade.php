@@ -1,13 +1,14 @@
 <nav>
     <ul class="sidebar-menu" data-widget="tree">
         <li class="{{  request()->is('dashboard') ? 'active' : '' }}"><a href="{{ route('dashboard.home') }}"><i class="zmdi zmdi-view-dashboard"></i><span>داشبورد</span></a></li>
-        <li class="treeview @php if( (request()->is('dashboard/student')) || ( request()->is('dashboard/student/create'))){echo  'active';} @endphp">
-            <a href="javascript:void(0)"><i class="zmdi zmdi-apps "></i> <span>مدیریت دانشجویان</span> <i class="fa fa-angle-left"></i></a>
-            <ul class="treeview-menu">
-                <li ><a href="{{ route('student.index') }}" style="{{ request()->is('dashboard/student') ? 'color:black' : ''}}">نمایش دانشجویان</a></li>
-                <li ><a href="{{ route('student.create') }}" style="{{ request()->is('dashboard/student/create') ? 'color:black' : ''}}">افزودن دانشجو</a></li>
-            </ul>
-        </li>
+            <li class="treeview @php if( (request()->is('dashboard/student')) || ( request()->is('dashboard/student/create'))){echo  'active';} @endphp">
+                <a href="javascript:void(0)"><i class="zmdi zmdi-apps "></i> <span>مدیریت دانشجویان</span> <i class="fa fa-angle-left"></i></a>
+                <ul class="treeview-menu">
+                    <li ><a href="{{ route('student.index') }}" style="{{ request()->is('dashboard/student') ? 'color:black' : ''}}">نمایش دانشجویان</a></li>
+                    <li ><a href="{{ route('student.create') }}" style="{{ request()->is('dashboard/student/create') ? 'color:black' : ''}}">افزودن دانشجو</a></li>
+                </ul>
+            </li>
+
         <li class="treeview @php if( (request()->is('dashboard/teacher')) || ( request()->is('dashboard/teacher/create'))){echo  'active';} @endphp">
             <a href="javascript:void(0)"><i class="zmdi zmdi-apps "></i> <span>مدیریت اساتید</span> <i class="fa fa-angle-left"></i></a>
             <ul class="treeview-menu">
@@ -53,6 +54,8 @@
 
 
             <li><a href="{{ route('logout') }}"  class="text-danger"   ><i class="zmdi zmdi-graduation-cap"></i><span>خروج</span></a></li>
+
+        <li><a href="{{ route('rollcall.index') }}"  class="text-white"   ><i class="zmdi zmdi-graduation-cap"></i><span>فرم حضور و غیاب</span></a></li>
 
 
     </ul>

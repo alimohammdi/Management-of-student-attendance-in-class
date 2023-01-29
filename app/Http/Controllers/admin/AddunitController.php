@@ -73,6 +73,7 @@ class AddunitController extends Controller
                'weekDay' => $day,
                 'time'   => $time,
                 'class_id' => $class,
+                'course_id' => $request->course,
                 'status'  => '0'
             ]);
 
@@ -81,12 +82,14 @@ class AddunitController extends Controller
                 'weekDay' => $day,
                 'time'   => $time,
                 'class_id' => $class,
+                'course_id' => $request->course,
                 'status'  => '0'
             ]);
             $createTime2 = Time::create([
                 'weekDay' => $day2,
                 'time'   => $time2,
                 'class_id' => $class2,
+                'course_id' => $request->course,
                 'status'  => $status
             ]);
         }else{
@@ -190,6 +193,7 @@ class AddunitController extends Controller
                 'weekDay' => $day,
                 'time'   => $time,
                 'class_id' => $class,
+                'course_id' => $request->course,
                 'status'  => '0'
             ]);
 
@@ -198,12 +202,14 @@ class AddunitController extends Controller
                 'weekDay' => $day,
                 'time'   => $time,
                 'class_id' => $class,
+                'course_id' => $request->course,
                 'status'  => '0'
             ]);
             $createTime2 = Time::where('id','=',$unit->time2_id)->update([
                 'weekDay' => $day2,
                 'time'   => $time2,
                 'class_id' => $class2,
+                'course_id' => $request->course,
                 'status'  => $status
             ]);
         }else{

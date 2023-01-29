@@ -89,12 +89,12 @@
                                         <label >انتخاب زمان کلاس ثابت هفتگی *</label>
                                         <select name="time" class="form-control">
                                             <option value="">ساعت کلاسی مورد نظر خود را انتخاب کنید </option>
-                                            <option value="8">8-10</option>
-                                            <option value="10">10-12</option>
-                                            <option value="12">12-14</option>
-                                            <option value="14">14-16</option>
-                                            <option value="16">16-18</option>
-                                            <option value="18">18-20</option>
+                                            <option value="08:00:00">8-10</option>
+                                            <option value="10:00:00">10-12</option>
+                                            <option value="12:00:00">12-14</option>
+                                            <option value="14:00:00">14-16</option>
+                                            <option value="16:00:00">16-18</option>
+                                            <option value="18:00:00">18-20</option>
                                         </select>
                                     </div>
                                     @error('time')
@@ -142,12 +142,12 @@
                                         <label >انتخاب زمان کلاس ثابت هفتگی  </label>
                                         <select name="time2" class="form-control">
                                             <option value="">ساعت کلاسی مورد نظر خود را انتخاب کنید </option>
-                                            <option value="8">8-10</option>
-                                            <option value="10">10-12</option>
-                                            <option value="12">12-14</option>
-                                            <option value="14">14-16</option>
-                                            <option value="16">16-18</option>
-                                            <option value="18">18-20</option>
+                                            <option value="08:00:00">8-10</option>
+                                            <option value="10:00:00">10-12</option>
+                                            <option value="12:00:00">12-14</option>
+                                            <option value="14:00:00">14-16</option>
+                                            <option value="16:00:00">16-18</option>
+                                            <option value="18:00:00">18-20</option>
                                         </select>
                                     </div>
                                     @error('time2')

@@ -64,6 +64,7 @@ class SelectUnitController extends Controller
                             'user_id' => $user_id
                         ]);
                         if($select_unit){
+
                             session()->flash('select.unit.success'," واحد مورد نظر با کد"  . $code." برای شما ثبت شد");
                             return back();
                         }else{
