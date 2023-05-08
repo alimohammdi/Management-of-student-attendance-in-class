@@ -8,119 +8,28 @@
                     <div class="card code-table">
                         <div class="card-body pb-0">
                             <h5 class="card-title">لیست دانشجویان</h5>
+                           @php $n = 1;
+                           $d = count($date)-1 ;
+                           @endphp
+
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
-                                    <thead class="thead-dark">
+                                    <tbody>
                                     <tr>
                                         <th>عدد</th>
                                         <th>نام دانشجو</th>
                                         <th>شماره دانشجویی</th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
-                                        <th></th>
+                                        @foreach($date as $date1)
+                                            <th> {{ $date1->date }}</th>
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>علی محمدی</td>
+                                        <td>9613038806</td>
+                                        <td>
 
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="form-group">
-                                                    <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
                                         </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td><div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td><div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="form-group">
-                                                <input type="checkbox" name="checkbox-1" id="checkbox-1" checked="">
-                                            </div>
-                                        </td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

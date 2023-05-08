@@ -57,6 +57,8 @@
 
         <li><a href="{{ route('rollcall.index') }}"  class="text-white"   ><i class="zmdi zmdi-graduation-cap"></i><span>فرم حضور و غیاب</span></a></li>
 
+        <li><a href="{{ route('manage-rollcall-student') }}"  class="text-white"   ><i class="zmdi zmdi-graduation-cap"></i><span>مدیریت حضور و غیاب دانشجویان</span></a></li>
+
 
     </ul>
         </li>

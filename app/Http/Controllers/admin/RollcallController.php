@@ -5,12 +5,17 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Addunit;
 use App\Models\Clases;
+use App\Models\Course;
+use App\Models\Rollcall;
 use App\Models\Selectunit;
 use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\Time;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Hekmatinasser\Verta\Verta;
+use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\isNull;
 
 class RollcallController extends Controller
@@ -22,14 +27,14 @@ $MyDate = date("N",time());
 
 switch ($MyDate){
     case 1 :
-        return "دوشنبه";
+        return "دو شنبه";
         break;
     case 2 :
         return "سه شنبه";
         break;
 
     case 3 :
-        return "چهارشنبه";
+        return "چهار شنبه";
         break;
 
     case 4 :
@@ -82,6 +87,7 @@ switch ($MyDate){
         $weekDay = $this->weekDay();
 
 
+
         // find now time and date
         $currentTime = verta()->formatTime() ; // 00:00:00
         $currentHourTime = verta()->hour.':00:00';  // 00
@@ -98,33 +104,49 @@ switch ($MyDate){
             if(!empty($unitTime1) & empty($unitTime2)){
                 $unitID = $unitTime1->id;
                 $studentID = $thisStudent->id;
-                $check_class = Selectunit::where('unit_id',$unitID)->where('user_id',$studentID)->first();
+
+                $check_class = Selectunit::where('addunit_id',$unitID)->where('student_id',$studentID)->first();
+
                 if(!empty($check_class)){
-
-                    return $check_class;
-
+                    $search = Rollcall::where('student_id',$check_class->student_id)->where('addunit_id',$check_class->addunit_id)->where('date',$currentDate)->where('status','0')->first();
+                   if( empty($search)){
+                       $create = Rollcall::create([
+                           'student_id'  => $check_class->student_id,
+                           'addunit_id'     =>  $check_class->addunit_id,
+                           'status'    =>    '0',
+                           'rollcall'      => '1',
+                           'date'       => $currentDate
+                       ]);
+                       if($create){
+                           return ' حضور شما برای این کلاس ثبت شد ';
+                       }else{
+                           return 'واحد درسی مورد نظر برای شما ثبت نشده 4';
+                       }
+                   }else{
+                       return 'حضور شما در این کلاس پیش تر ثبت شده است';
+                   }
                 }else{
-                    return 'واحد درسی مورد نظر برای شما ثبت نشده ';
+                    return 'واحد درسی مورد نظر برای شما ثبت نشده 3';
                 }
 
             }elseif(!empty($unitTime2) & empty($unitTime1)){
 
             }else{
-                return 'در این زمان درسی برای این کلاس تعریف نشده ';
+                return 'در این زمان درسی برای این کلاس تعریف نشده2 ';
             }
         }else{
-           return 'در این زمان درسی برای این کلاس تعریف نشده ';
+           return 'در این زمان درسی برای این کلاس تعریف نشده1 ';
         }
-
-
-
-
 
     }
 
     public function show($id)
     {
-        //
+        $students = Selectunit::where('addunit_id',$id)->get();
+        $date = Rollcall::select('date')->distinct()->get();
+        $rollcall = Rollcall::where('addunit_id',$id)->get();
+        return view('dashboard.rollcall.teacher.rollcall-list',compact('students','rollcall','date'));
+
     }
 
     public function edit($id)
@@ -142,6 +164,26 @@ switch ($MyDate){
         //
     }
 
+
+    public function selectCourse(){
+        $teacher_id = auth()->id();
+        $user = User::where('id',$teacher_id)->first();
+        if($user){
+            if($user->role === 'teacher'){
+                $teacher = Teacher::where('user_id',$user->id)->first();
+                $courses =  Addunit::where('teacher_id',$teacher->id)->get();
+                return view('dashboard.rollcall.teacher.course-list',compact('courses'));
+            }else{
+                Auth::logout();
+                return redirect('/login');
+            }
+        }else{
+            Auth::logout();
+            return redirect('/login');
+        }
+
+
+}
 
 
 }

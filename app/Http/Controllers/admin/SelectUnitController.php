@@ -7,6 +7,7 @@ use App\Models\Addunit;
 use App\Models\College;
 use App\Models\Course;
 use App\Models\Selectunit;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class SelectUnitController extends Controller
@@ -49,19 +50,21 @@ class SelectUnitController extends Controller
            'code_course'  => 'required'
         ]);
           $code = $request->code_course;
-          $user_id = 2;
-          if(isset($user_id)){
+          $user_id = auth()->id();
+          $student = Student::where('user_id',$user_id)->first();
+          if(isset($student)){
                $unit_code = Course::where('code',$code)->first();
                if(!empty($unit_code)){
                     $unit = Addunit::where('course_id',$unit_code->id)->first();
-                    $check = Selectunit::where('unit_id',$unit->id)->where('user_id',$user_id)->first();
+                    $check = Selectunit::where('addunit_id',$unit->id)->where('student_id',$user_id)->first();
                     if($check){
                         session()->flash('select.unit.error','واحد مورد نظر قبلا برای شما انتخاب شده است');
                         return back();
                     }else{
+
                         $select_unit = Selectunit::create([
-                            'unit_id' => $unit->id,
-                            'user_id' => $user_id
+                            'addunit_id' => $unit->id,
+                            'student_id' => $student->id
                         ]);
                         if($select_unit){
 

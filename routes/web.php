@@ -53,7 +53,10 @@ Route::group(['middleware' => ['auth'],'prefix'=>'dashboard'],function(){
 
 Route::prefix('/')->group( function(){
     Route::resource('/rollcall',\App\Http\Controllers\admin\RollcallController::class)->parameters(['rollcall'=>'id']);
- });
+   Route::get('manage-rollcall-student',[\App\Http\Controllers\admin\RollcallController::class,'selectCourse'])->name('manage-rollcall-student');
+
+
+});
 
 
 

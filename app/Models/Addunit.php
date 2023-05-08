@@ -27,4 +27,5 @@ class Addunit extends Model
     public function teacher(){
         return $this->belongsTo(Teacher::class);
     }
+
 }

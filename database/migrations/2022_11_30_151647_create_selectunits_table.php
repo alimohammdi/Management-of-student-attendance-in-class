@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('selectunits', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->on('users')->references('id')->onUpdate('cascade');
+            $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->on('students')->references('id')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('unit_id');
-            $table->foreign('unit_id')->on('addunits')->references('id')->onUpdate('cascade');
+            $table->unsignedBigInteger('addunit_id');
+            $table->foreign('addunit_id')->on('addunits')->references('id')->onUpdate('cascade');
 
             $table->timestamps();
         });

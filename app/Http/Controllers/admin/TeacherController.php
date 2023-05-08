@@ -29,7 +29,7 @@ class TeacherController extends Controller
 
     public function store(AddTeacherRequest $request)
     {
-        $pass =  Hash::make($request->password);
+        $pass =  md5($request->password);
         $user = User::create([
             'user_name' => $request->user_name,
             'password' => $pass,

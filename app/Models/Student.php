@@ -23,4 +23,11 @@ class Student extends Model
     public function courses(){
         return $this->belongsToMany(Course::class);
     }
+
+
+    public function selectunit(){
+        return $this->hasMany(Selectunit::class);
+    }
+
+
 }
